@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+  labels:
+    name: ingress-service
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: catcher.dev
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /api/leaderboard/?(.*)
+            backend:
+              service:
+                name: leaderboard-srv
+                port:
+                  number: 3000
+          - pathType: ImplementationSpecific
+            path: /?(.*)
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000

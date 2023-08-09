@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaderboard-mongo-depl
+spec:
+  selector:
+    matchLabels:
+      app: leaderboard-mongo
+  template:
+    metadata:
+      labels:
+        app: leaderboard-mongo
+    spec:
+      containers:
+        - name: leaderboard-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: leaderboard-mongo-srv
+spec:
+  selector:
+    app: leaderboard-mongo
+  ports:
+    - name: leaderboard-db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
