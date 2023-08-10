@@ -1,3 +1,10 @@
+.end-menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .player-name-container {
   display: flex;
   justify-content: space-between;
@@ -35,7 +42,7 @@
 }
 
 .final-score {
-  color: aquamarine;
+  color: rgb(63, 248, 186);
   backdrop-filter: blur(4px);
   border-radius: 10px;
 }

@@ -22,7 +22,7 @@ export const EndMenu = () => {
   };
 
   return (
-    <div>
+    <div className="end-menu-container">
       <h1 className="game-over">GAME OVER</h1>
       <h1 className="final-score">SCORE: {score}</h1>
       <div class="player-name-container">
@@ -37,8 +37,11 @@ export const EndMenu = () => {
           style={{ backgroundColor: '#39e600', fontSize: '23pt' }}
         />
       </div>
-      <Button title="Play Again" clickHandler={playAgainHandler} />
-      <Button title="Leader Board" />
+
+      <div className="end-menu-buttons">
+        <Button title="Play Again" clickHandler={playAgainHandler} />
+        <Button title="Leader Board" />
+      </div>
     </div>
   );
 };

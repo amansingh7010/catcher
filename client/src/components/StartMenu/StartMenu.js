@@ -20,6 +20,8 @@ const StartMenu = () => {
         />
         <Button title="Leader Board" />
       </div>
+
+      {/* ADD INSTRUCTIONS TO PLAY GAME */}
     </div>
   );
 };
