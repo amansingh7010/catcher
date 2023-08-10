@@ -1,5 +1,5 @@
 .catch-item {
-  height: 6vh;
-  width: 6vw;
+  height: 60px;
+  width: 70px;
   transition: transform 0.5s linear;
 }
