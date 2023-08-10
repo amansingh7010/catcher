@@ -7,10 +7,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import gameStateReducer from './features/game-state';
+import scoreReducer from './features/score';
 
 const store = configureStore({
   reducer: {
     gameState: gameStateReducer,
+    score: scoreReducer,
   },
 });
 
