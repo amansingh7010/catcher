@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import Button from '../Button/Button';
+import Button from '../UI/Button/Button';
 import './StartMenu.css';
 import logo from '../../assets/p1.png';
 import { updateGameState } from '../../features/game-state';

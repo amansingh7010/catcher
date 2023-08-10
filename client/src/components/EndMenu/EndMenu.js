@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import Button from '../Button/Button';
+import Button from '../UI/Button/Button';
 import { NEW_GAME } from '../../constants/game-states';
 import { updateGameState } from '../../features/game-state';
 import './EndMenu.css';
