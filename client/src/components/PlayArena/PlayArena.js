@@ -8,6 +8,16 @@ import { END_GAME } from '../../constants/game-states';
 import Boat from '../UI/Boat/Boat';
 import CatchItem from '../UI/CatchItem/CatchItem';
 
+import p1 from '../../assets/p1.png';
+import p2 from '../../assets/p2.png';
+import p3 from '../../assets/p3.png';
+import p4 from '../../assets/p4.png';
+import e1 from '../../assets/e1.png';
+import e2 from '../../assets/e2.png';
+
+const friends = [p1, p2, p3, p4];
+const enemies = [e1, e2];
+
 export const PlayArena = () => {
   const [seconds, setSeconds] = useState(60);
   const [boatX, setBoatX] = useState(0);
@@ -61,7 +71,20 @@ export const PlayArena = () => {
   useEffect(() => {
     const gameInterval = setInterval(() => {
       const randomX = Math.random() * (window.innerWidth - 70);
-      setCatchItems((prevItems) => [...prevItems, { x: randomX, y: 0 }]);
+      const catchItemType = Math.random() < 0.5 ? 'p' : 'e'; // p = friend, e = enemy
+
+      // Set a random item image
+      let catchItemSrc = '';
+      if (catchItemType === 'p') {
+        catchItemSrc = friends[Math.floor(Math.random() * friends.length)];
+      } else {
+        catchItemSrc = enemies[Math.floor(Math.random() * enemies.length)];
+      }
+
+      setCatchItems((prevItems) => [
+        ...prevItems,
+        { x: randomX, y: 0, type: catchItemType, imgSrc: catchItemSrc },
+      ]);
     }, itemGenerationInterval);
 
     return () => clearInterval(gameInterval);
@@ -85,7 +108,7 @@ export const PlayArena = () => {
   // Collision detection and remove CatchItems
   useEffect(() => {
     // Set to efficiently store multiple collisions
-    const collidingItemIds = new Set();
+    const collidingItems = new Set();
 
     const itemFallInterval = setInterval(() => {
       setCatchItems((prevItems) => {
@@ -101,18 +124,26 @@ export const PlayArena = () => {
             item.x >= boatX &&
             item.x <= boatX + 60
           ) {
-            collidingItemIds.add(index);
+            collidingItems.add(index);
           }
         });
 
-        const updatedScore = collidingItemIds.size;
+        let updatedScore = 0;
+
+        // If the player catches more than one item at once
+        collidingItems.forEach((index) => {
+          if (newItems[index].type === 'p') {
+            updatedScore += 100; // +100 for p (friend)
+          } else {
+            updatedScore -= 50; // -50 for e (enemy)
+          }
+        });
 
         setCurrentScore(currentScore + updatedScore);
 
         return newItems.filter(
-          (_, index) =>
-            !collidingItemIds.has(index) &&
-            newItems[index].y < window.innerHeight
+          (item, index) =>
+            !collidingItems.has(item) && newItems[index].y < window.innerHeight
         );
       });
     }, 300);
@@ -140,6 +171,7 @@ export const PlayArena = () => {
       {catchItems.map((item, index) => (
         <CatchItem
           key={index}
+          imgSrc={item.imgSrc}
           style={{ ...catchItemStyle, left: item.x, top: item.y }}
         />
       ))}
