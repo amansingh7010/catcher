@@ -1,9 +1,9 @@
-.App {
+.layout {
   text-align: center;
-  background: url('./assets/bg1.png');
+  background: url('../../assets/bg1.png');
 }
 
-.App-container {
+.layout-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

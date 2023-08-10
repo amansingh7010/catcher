@@ -1,0 +1,22 @@
+.arena-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.hud {
+  padding: 3rem;
+  width: 85%;
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.score {
+  margin: 1rem;
+}
+
+.timer {
+  margin: 1rem;
+}
