@@ -11,7 +11,7 @@ const StartMenu = () => {
 
   return (
     <div className="start-menu-container">
-      <h1>Catcher</h1>
+      <h1 className="title">Catcher</h1>
       <img src={logo} className="App-logo" alt="logo" />
       <div>
         <Button

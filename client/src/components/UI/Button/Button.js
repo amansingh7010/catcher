@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 import './Button.css';
 
-const Button = ({ title, clickHandler }) => (
-  <div className="button-container">
+const Button = ({ title, clickHandler, style }) => (
+  <div className="button-container" style={style}>
     <div className="button-inner" onClick={clickHandler}>
       {title}
     </div>
@@ -11,8 +11,9 @@ const Button = ({ title, clickHandler }) => (
 );
 
 Button.propTypes = {
-  title: PropTypes.string,
-  clickHandler: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  style: PropTypes.object,
 };
 
 export default Button;

@@ -1,0 +1,41 @@
+.player-name-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.player-name-container input {
+  margin: 10px;
+  padding: 5px 10px 5px 10px;
+  width: 75%;
+  max-width: 20vw;
+  border: 1px solid none;
+  border-radius: 10px;
+  background-color: #e6e6e6;
+  font-family: 'IM Fell DW Pica SC';
+  font-size: 28pt;
+  opacity: 0.8;
+}
+
+.player-name-container input:hover {
+  opacity: 1;
+}
+
+.player-name-container input:focus {
+  opacity: 1;
+  border: 1px solid none;
+}
+
+.game-over {
+  color: #e60000;
+  backdrop-filter: blur(3px);
+  border-radius: 10px;
+  font-size: 60pt;
+}
+
+.final-score {
+  color: aquamarine;
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
