@@ -18,6 +18,15 @@ export const PlayArena = () => {
   const itemFallSpeed = 7;
   const itemGenerationInterval = 2000;
 
+  // Hide pointer on game start
+  useEffect(() => {
+    document.body.classList.add('hide-pointer');
+
+    return () => {
+      document.body.classList.remove('hide-pointer');
+    };
+  }, []);
+
   // Timer
   useEffect(() => {
     const timer = setInterval(() => {
@@ -73,16 +82,7 @@ export const PlayArena = () => {
     return () => clearInterval(itemFallInterval);
   }, []);
 
-  const boatStyle = {
-    position: 'absolute',
-    left: boatX,
-    bottom: 0,
-  };
-
-  const catchItemStyle = {
-    position: 'absolute',
-  };
-
+  // Collision detection and remove CatchItems
   useEffect(() => {
     // Set to efficiently store multiple collisions
     const collidingItemIds = new Set();
@@ -119,6 +119,16 @@ export const PlayArena = () => {
 
     return () => clearInterval(itemFallInterval);
   }, [boatX, currentScore, dispatch]);
+
+  const boatStyle = {
+    position: 'absolute',
+    left: boatX,
+    bottom: 0,
+  };
+
+  const catchItemStyle = {
+    position: 'absolute',
+  };
 
   return (
     <div className="arena-container">
