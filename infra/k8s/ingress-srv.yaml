@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: catcher.dev
+    - host: catcher.amansinghs.dev
       http:
         paths:
           - pathType: ImplementationSpecific
