@@ -2,7 +2,7 @@ apiVersion: skaffold/v4beta6
 kind: Config
 manifests:
   rawYaml:
-    - './infra/k8s/ingress-srv.yaml'
+    - './infra/k8s-dev/ingress-srv.yaml'
     - './infra/k8s/leaderboard-depl.yaml'
     - './infra/k8s/leaderboard-mongo-depl.yaml'
     - './infra/k8s/client-depl.yaml'
