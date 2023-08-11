@@ -1,0 +1,28 @@
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.pagination {
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-button {
+  min-width: 20vw;
+}
+
+.pagination-text {
+  display: flex;
+  align-items: center;
+}

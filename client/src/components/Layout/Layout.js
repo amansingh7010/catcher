@@ -7,6 +7,7 @@ import PlayArena from '../PlayArena/PlayArena';
 import EndMenu from '../EndMenu/EndMenu';
 import { NEW_GAME, IN_GAME, END_GAME } from '../../constants/game-states';
 import Modal from '../UI/Modal/Modal';
+import LeaderBoard from '../LeaderBoard/LeaderBoard';
 
 function Layout() {
   const [leaderBoardOpen, setLeaderBoardOpen] = useState(false);
@@ -41,8 +42,8 @@ function Layout() {
         <div className="layout-container">{renderScreen()}</div>
       </div>
       {leaderBoardOpen && (
-        <Modal title="LeaderBoard" onClose={() => setLeaderBoardOpen(false)}>
-          <h1>Testtt</h1>
+        <Modal title="Leader Board" onClose={() => setLeaderBoardOpen(false)}>
+          <LeaderBoard />
         </Modal>
       )}
       {instructionsOpen && (
