@@ -7,7 +7,7 @@ import logo from '../../assets/p1.png';
 import { updateGameState } from '../../features/game-state';
 import { IN_GAME } from '../../constants/game-states';
 
-const StartMenu = ({ openLeaderBoard }) => {
+const StartMenu = ({ openLeaderBoard, openInstructions }) => {
   const dispatch = useDispatch();
 
   return (
@@ -24,15 +24,19 @@ const StartMenu = ({ openLeaderBoard }) => {
           clickHandler={openLeaderBoard}
           style={{ backgroundColor: '#ffb31a' }}
         />
+        <Button
+          title="Instructions"
+          clickHandler={openInstructions}
+          style={{ backgroundColor: '#ff99ff' }}
+        />
       </div>
-
-      {/* ADD INSTRUCTIONS TO PLAY GAME */}
     </div>
   );
 };
 
 StartMenu.propTypes = {
   openLeaderBoard: PropTypes.func.isRequired,
+  openInstructions: PropTypes.func.isRequired,
 };
 
 export default StartMenu;
