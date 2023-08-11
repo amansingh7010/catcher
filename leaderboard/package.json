@@ -1,7 +1,7 @@
 {
   "name": "leaderboard",
   "version": "1.0.0",
-  "description": "",
+  "description": "A microservice for Catcher game",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache",
