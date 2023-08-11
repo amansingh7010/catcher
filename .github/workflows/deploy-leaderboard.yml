@@ -1,0 +1,24 @@
+name: deploy-leaderboard
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'leaderboard/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd leaderboard && docker build -t amansinghs/catcher-leaderboard .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_ACCESS_TOKEN
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+      - run: docker push amansinghs/catcher-leaderboard
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save personal-projects-cluster
+      - run: kubectl rollout restart deployment leaderboard-depl
