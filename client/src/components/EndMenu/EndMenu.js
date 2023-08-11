@@ -41,7 +41,11 @@ export const EndMenu = ({ openLeaderBoard }) => {
 
       <div className="end-menu-buttons">
         <Button title="Play Again" clickHandler={playAgainHandler} />
-        <Button title="Leader Board" clickHandler={openLeaderBoard} />
+        <Button
+          title="Leader Board"
+          clickHandler={openLeaderBoard}
+          style={{ backgroundColor: '#ffb31a' }}
+        />
       </div>
     </div>
   );

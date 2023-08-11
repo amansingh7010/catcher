@@ -16,10 +16,14 @@ const StartMenu = ({ openLeaderBoard }) => {
       <img src={logo} className="App-logo" alt="logo" />
       <div>
         <Button
-          title="Play"
+          title="Play Game"
           clickHandler={() => dispatch(updateGameState(IN_GAME))}
         />
-        <Button title="Leader Board" clickHandler={openLeaderBoard} />
+        <Button
+          title="Leader Board"
+          clickHandler={openLeaderBoard}
+          style={{ backgroundColor: '#ffb31a' }}
+        />
       </div>
 
       {/* ADD INSTRUCTIONS TO PLAY GAME */}
