@@ -1,6 +1,7 @@
 .layout {
   text-align: center;
   background: url('../../assets/bg1.png');
+  background-size: cover;
 }
 
 .layout-container {
