@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Button from '../UI/Button/Button';
 import './StartMenu.css';
@@ -6,7 +7,7 @@ import logo from '../../assets/p1.png';
 import { updateGameState } from '../../features/game-state';
 import { IN_GAME } from '../../constants/game-states';
 
-const StartMenu = () => {
+const StartMenu = ({ openLeaderBoard }) => {
   const dispatch = useDispatch();
 
   return (
@@ -18,12 +19,16 @@ const StartMenu = () => {
           title="Play"
           clickHandler={() => dispatch(updateGameState(IN_GAME))}
         />
-        <Button title="Leader Board" />
+        <Button title="Leader Board" clickHandler={openLeaderBoard} />
       </div>
 
       {/* ADD INSTRUCTIONS TO PLAY GAME */}
     </div>
   );
+};
+
+StartMenu.propTypes = {
+  openLeaderBoard: PropTypes.func.isRequired,
 };
 
 export default StartMenu;

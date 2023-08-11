@@ -1,0 +1,57 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: hidden;
+  border: 1px solid antiquewhite;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: antiquewhite;
+  border-bottom: 1px solid black;
+}
+
+.header-title {
+  margin: 0.5rem;
+  font-size: 25pt;
+}
+
+.content {
+  padding: 1rem;
+  background-color: antiquewhite;
+  border-bottom: 1px solid black;
+}
+
+.footer {
+  padding: 0.5rem;
+  background-color: antiquewhite;
+}
+
+.footer-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}

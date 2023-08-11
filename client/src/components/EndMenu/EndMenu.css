@@ -9,16 +9,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 1rem;
 }
 
 .player-name-container input {
-  margin: 10px;
-  padding: 5px 10px 5px 10px;
+  margin: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   width: 75%;
   max-width: 20vw;
   border: 1px solid none;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: #e6e6e6;
   font-family: 'IM Fell DW Pica SC';
   font-size: 28pt;
@@ -31,18 +31,18 @@
 
 .player-name-container input:focus {
   opacity: 1;
-  border: 1px solid none;
+  border: 0.5rem solid none;
 }
 
 .game-over {
   color: #e60000;
   backdrop-filter: blur(3px);
-  border-radius: 10px;
+  border-radius: 1rem;
   font-size: 60pt;
 }
 
 .final-score {
   color: rgb(63, 248, 186);
-  backdrop-filter: blur(4px);
-  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  border-radius: 1rem;
 }
