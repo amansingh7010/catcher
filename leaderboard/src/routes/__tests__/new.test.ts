@@ -21,4 +21,19 @@ it('creates a player with valid inputs', async () => {
   expect(players[0].score).toEqual(score);
 });
 
-it.todo('returns an error if invalid name or price is provided');
+it('returns an error if invalid name or score is provided', async () => {
+  await request(app)
+    .post('/api/leaderboard')
+    .send({
+      name: '',
+      score: 200,
+    })
+    .expect(400);
+
+  await request(app)
+    .post('/api/leaderboard')
+    .send({
+      name: 'Player Name',
+    })
+    .expect(400);
+});
