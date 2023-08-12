@@ -121,8 +121,8 @@ export const PlayArena = () => {
         // Collision detection
         newItems.forEach((item, index) => {
           if (
-            item.y >= window.innerHeight - 135 &&
-            item.x >= boatX &&
+            item.y >= window.innerHeight - 150 &&
+            item.x >= boatX - 100 &&
             item.x <= boatX + 100
           ) {
             collidingItemIds.add(index);
