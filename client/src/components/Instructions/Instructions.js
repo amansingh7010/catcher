@@ -20,7 +20,7 @@ const Instructions = () => (
       </li>
       <li>
         <span>Friends</span>
-        <strong style={{ color: 'green' }}> +100 points</strong>
+        <strong style={{ color: 'green' }}> +50 points</strong>
         <img className="instructions-image" src={p1} alt="Player" />
         <img className="instructions-image" src={p2} alt="Player" />
         <img className="instructions-image" src={p3} alt="Player" />
@@ -28,7 +28,7 @@ const Instructions = () => (
       </li>
       <li>
         <span>Enemies</span>
-        <strong style={{ color: '#e60000' }}> -50 points</strong>
+        <strong style={{ color: '#e60000' }}> -100 points</strong>
         <img className="instructions-image" src={e1} alt="Player" />
         <img className="instructions-image" src={e2} alt="Player" />
       </li>

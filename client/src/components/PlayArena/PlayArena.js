@@ -135,16 +135,16 @@ export const PlayArena = () => {
         collidingItemIds.forEach((index) => {
           const item = newItems[index];
           if (newItems[index].type === 'p') {
-            updatedScore += 100; // +100 for p (friend)
+            updatedScore += 50; // +50 for p (friend)
             setAnimationMessages((prevMessages) => [
               ...prevMessages,
-              { value: '+100', color: 'green', x: item.x, y: item.y },
+              { value: '+50', color: 'green', x: item.x, y: item.y },
             ]);
           } else {
-            updatedScore -= 50; // -50 for e (enemy)
+            updatedScore -= 100; // -100 for e (enemy)
             setAnimationMessages((prevMessages) => [
               ...prevMessages,
-              { value: '-50', color: '#e60000', x: item.x, y: item.y },
+              { value: '-100', color: '#e60000', x: item.x, y: item.y },
             ]);
           }
         });
