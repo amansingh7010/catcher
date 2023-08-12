@@ -108,7 +108,7 @@ export const PlayArena = () => {
   // Collision detection and remove CatchItems
   useEffect(() => {
     // Set to efficiently store multiple collisions
-    const collidingItems = new Set();
+    const collidingItemIds = new Set();
 
     const itemFallInterval = setInterval(() => {
       setCatchItems((prevItems) => {
@@ -124,14 +124,14 @@ export const PlayArena = () => {
             item.x >= boatX &&
             item.x <= boatX + 60
           ) {
-            collidingItems.add(index);
+            collidingItemIds.add(index);
           }
         });
 
         let updatedScore = 0;
 
         // If the player catches more than one item at once
-        collidingItems.forEach((index) => {
+        collidingItemIds.forEach((index) => {
           if (newItems[index].type === 'p') {
             updatedScore += 100; // +100 for p (friend)
           } else {
@@ -139,11 +139,12 @@ export const PlayArena = () => {
           }
         });
 
-        setCurrentScore(currentScore + updatedScore);
+        setCurrentScore((prevScore) => prevScore + updatedScore);
 
         return newItems.filter(
           (item, index) =>
-            !collidingItems.has(item) && newItems[index].y < window.innerHeight
+            !collidingItemIds.has(index) &&
+            newItems[index].y < window.innerHeight
         );
       });
     }, 300);
