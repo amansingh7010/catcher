@@ -8,9 +8,8 @@ const Button = ({ title, clickHandler, style, disabled = false }) => {
     (event) => {
       event.preventDefault();
       if (!clickHandler || disabled) {
-        event.stopPropagation();
+        return;
       }
-
       clickHandler();
     },
     [disabled, clickHandler]

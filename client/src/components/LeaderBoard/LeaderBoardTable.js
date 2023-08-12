@@ -95,20 +95,20 @@ const LeaderBoardTable = ({ data }) => {
         </tbody>
       </table>
 
-      <div className="pagination">
-        <Button
-          title="<"
-          className="pagination-button"
-          clickHandler={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-          style={{
-            fontSize: '15pt',
-            padding: '0.3rem',
-            width: '2vw',
-            backgroundColor: '#ffd633',
-          }}
-        />
-        {table.getPageCount() > 1 && (
+      {table.getPageCount() > 1 && (
+        <div className="pagination">
+          <Button
+            title="<"
+            className="pagination-button"
+            clickHandler={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            style={{
+              fontSize: '15pt',
+              padding: '0.3rem',
+              width: '2vw',
+              backgroundColor: '#ffd633',
+            }}
+          />
           <span className="pagination-text">
             <div style={{ marginRight: '0.5rem' }}>Page</div>
             <strong>
@@ -116,20 +116,20 @@ const LeaderBoardTable = ({ data }) => {
               {table.getPageCount()}
             </strong>
           </span>
-        )}
-        <Button
-          title=">"
-          className="pagination-button"
-          clickHandler={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-          style={{
-            fontSize: '15pt',
-            padding: '0.3rem',
-            width: '2vw',
-            backgroundColor: '#ffd633',
-          }}
-        />
-      </div>
+          <Button
+            title=">"
+            className="pagination-button"
+            clickHandler={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            style={{
+              fontSize: '15pt',
+              padding: '0.3rem',
+              width: '2vw',
+              backgroundColor: '#ffd633',
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
