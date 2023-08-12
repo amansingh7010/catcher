@@ -19,7 +19,7 @@ const friends = [p1, p2, p3, p4];
 const enemies = [e1, e2];
 
 export const PlayArena = () => {
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(15);
   const [boatX, setBoatX] = useState(0);
   const [catchItems, setCatchItems] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
@@ -165,7 +165,9 @@ export const PlayArena = () => {
     <div className="arena-container">
       <div className="hud">
         <h3 className="score">Score: {currentScore}</h3>
-        <h3 className="timer">Time Left: {seconds}s</h3>
+        <h3 className={seconds < 10 ? 'timer blinker' : 'timer'}>
+          Time Left: {seconds}s
+        </h3>
       </div>
       <Boat style={boatStyle} />
       {catchItems.map((item, index) => (

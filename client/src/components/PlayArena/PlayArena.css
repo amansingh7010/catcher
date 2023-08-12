@@ -24,3 +24,13 @@
 .hide-pointer {
   cursor: none;
 }
+
+.blinker {
+  animation: warning 1s linear infinite;
+}
+
+@keyframes warning {
+  50% {
+    color: #e60000;
+  }
+}
