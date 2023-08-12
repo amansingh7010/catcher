@@ -9,12 +9,14 @@ import reportWebVitals from './reportWebVitals';
 import gameStateReducer from './features/game-state';
 import scoreReducer from './features/score';
 import notificationReducer from './features/notification';
+import playerReducer from './features/player';
 
 const store = configureStore({
   reducer: {
     gameState: gameStateReducer,
     score: scoreReducer,
     notifications: notificationReducer,
+    player: playerReducer,
   },
 });
 

@@ -28,6 +28,7 @@ const LeaderBoard = () => {
 
       for (const index in data) {
         loadedPlayers.push({
+          id: data[index].id,
           rank: parseInt(index) + 1,
           name: data[index].name,
           score: data[index].score,

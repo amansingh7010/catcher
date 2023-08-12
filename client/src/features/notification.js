@@ -5,7 +5,6 @@ const notificationSlice = createSlice({
   initialState: [],
   reducers: {
     addNotification: (state, action) => {
-      console.log(state);
       state.push({ ...action.payload, id: new Date().getTime() });
     },
     removeNotification: (state, action) => {

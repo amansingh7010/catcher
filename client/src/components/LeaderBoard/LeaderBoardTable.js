@@ -5,6 +5,8 @@ import {
   useReactTable,
   getPaginationRowModel,
 } from '@tanstack/react-table';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import './LeaderBoardTable.css';
 import Button from '../UI/Button/Button';
@@ -41,6 +43,8 @@ const LeaderBoardTable = ({ data }) => {
     },
   });
 
+  const selectedPlayerId = useSelector((state) => state.player.value);
+
   return (
     <div className="table-wrapper">
       <table>
@@ -69,10 +73,17 @@ const LeaderBoardTable = ({ data }) => {
                 ? 'silver'
                 : row.id === '2'
                 ? 'bronze'
-                : null;
+                : '';
 
             return (
-              <tr key={row.id} className={highlightClass}>
+              <tr
+                key={row.id}
+                className={
+                  selectedPlayerId === row.original.id
+                    ? highlightClass.concat(' highlight-player')
+                    : highlightClass
+                }
+              >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -121,6 +132,10 @@ const LeaderBoardTable = ({ data }) => {
       </div>
     </div>
   );
+};
+
+LeaderBoardTable.propTypes = {
+  data: PropTypes.array.isRequired,
 };
 
 export default LeaderBoardTable;

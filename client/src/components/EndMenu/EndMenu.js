@@ -7,6 +7,7 @@ import { NEW_GAME } from '../../constants/game-states';
 import { updateGameState } from '../../features/game-state';
 import { updateScore } from '../../features/score';
 import { addNotification } from '../../features/notification';
+import { updatePlayerId } from '../../features/player';
 import './EndMenu.css';
 
 export const EndMenu = ({ openLeaderBoard }) => {
@@ -16,8 +17,10 @@ export const EndMenu = ({ openLeaderBoard }) => {
   const score = useSelector((state) => state.score.value);
   const dispatch = useDispatch();
 
+  // reset all the states when play again is clicked
   const playAgainHandler = () => {
     dispatch(updateScore(0));
+    dispatch(updatePlayerId(null));
     dispatch(updateGameState(NEW_GAME));
   };
 
@@ -34,7 +37,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
           position: 'center',
         })
       );
-
       return;
     }
 
@@ -46,7 +48,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
           position: 'center',
         })
       );
-
       return;
     }
 
@@ -67,6 +68,7 @@ export const EndMenu = ({ openLeaderBoard }) => {
       const data = await response.json();
 
       setScoreSubmitted(true);
+      dispatch(updatePlayerId(data.id));
 
       dispatch(
         addNotification({
@@ -75,8 +77,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
           position: 'center',
         })
       );
-
-      console.log(data);
     } catch (error) {
       console.log(error);
       setError(error);
