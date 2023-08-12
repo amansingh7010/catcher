@@ -23,6 +23,7 @@ export const PlayArena = () => {
   const [boatX, setBoatX] = useState(0);
   const [catchItems, setCatchItems] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
+  const [animationMessages, setAnimationMessages] = useState([]);
   const dispatch = useDispatch();
 
   const itemFallSpeed = 7;
@@ -122,7 +123,7 @@ export const PlayArena = () => {
           if (
             item.y >= window.innerHeight - 135 &&
             item.x >= boatX &&
-            item.x <= boatX + 60
+            item.x <= boatX + 100
           ) {
             collidingItemIds.add(index);
           }
@@ -132,10 +133,19 @@ export const PlayArena = () => {
 
         // If the player catches more than one item at once
         collidingItemIds.forEach((index) => {
+          const item = newItems[index];
           if (newItems[index].type === 'p') {
             updatedScore += 100; // +100 for p (friend)
+            setAnimationMessages((prevMessages) => [
+              ...prevMessages,
+              { value: '+100', color: 'green', x: item.x, y: item.y },
+            ]);
           } else {
             updatedScore -= 50; // -50 for e (enemy)
+            setAnimationMessages((prevMessages) => [
+              ...prevMessages,
+              { value: '-50', color: '#e60000', x: item.x, y: item.y },
+            ]);
           }
         });
 
@@ -151,6 +161,16 @@ export const PlayArena = () => {
 
     return () => clearInterval(itemFallInterval);
   }, [boatX, currentScore, dispatch]);
+
+  // Remove animation message after 1 second
+  useEffect(() => {
+    if (animationMessages.length > 0) {
+      const messageTimeout = setTimeout(() => {
+        setAnimationMessages([]);
+      }, 1000); // Adjust the duration as needed
+      return () => clearTimeout(messageTimeout);
+    }
+  }, [animationMessages]);
 
   const boatStyle = {
     position: 'absolute',
@@ -171,12 +191,25 @@ export const PlayArena = () => {
         </h3>
       </div>
       <Boat style={boatStyle} />
+
+      {/* Render Falling Items */}
       {catchItems.map((item, index) => (
         <CatchItem
           key={index}
           imgSrc={item.imgSrc}
           style={{ ...catchItemStyle, left: item.x, top: item.y }}
         />
+      ))}
+
+      {/* Render messages when an item is caught */}
+      {animationMessages.map((message, index) => (
+        <div
+          key={index}
+          className="animation-message"
+          style={{ color: message.color, top: message.y, left: message.x }}
+        >
+          {message.value}
+        </div>
       ))}
     </div>
   );

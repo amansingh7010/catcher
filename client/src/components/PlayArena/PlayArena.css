@@ -34,3 +34,21 @@
     color: #e60000;
   }
 }
+
+.animation-message {
+  position: absolute;
+  font-size: 35pt;
+  font-weight: bold;
+  animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
