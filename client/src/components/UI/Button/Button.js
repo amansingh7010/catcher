@@ -5,11 +5,10 @@ import './Button.css';
 const Button = ({ title, clickHandler, style, disabled = false }) => (
   <div
     className={disabled ? 'button-container disabled' : 'button-container'}
+    onClick={clickHandler}
     style={style}
   >
-    <div className="button-inner" onClick={clickHandler}>
-      {title}
-    </div>
+    <div className="button-inner">{title}</div>
   </div>
 );
 
