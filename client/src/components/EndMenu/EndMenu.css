@@ -36,13 +36,13 @@
 
 .game-over {
   color: #e60000;
-  backdrop-filter: blur(3px);
+  text-shadow: 0 0 10px #424040;
   border-radius: 1rem;
   font-size: 60pt;
 }
 
 .final-score {
   color: rgb(63, 248, 186);
-  backdrop-filter: blur(3px);
+  text-shadow: 0 0 10px #1d1919;
   border-radius: 1rem;
 }
