@@ -8,11 +8,19 @@
 
 table {
   width: 100%;
-  font-size: 20pt;
+  font-size: 18pt;
 }
 
-table tbody td {
+td {
   text-align: center;
+}
+
+tr:nth-child(1) td:first-child {
+  border-top-left-radius: 1rem;
+}
+
+tr:nth-child(1) td:last-child {
+  border-top-right-radius: 1rem;
 }
 
 .pagination {
@@ -30,4 +38,19 @@ table tbody td {
 .pagination-text {
   display: flex;
   align-items: center;
+}
+
+.gold {
+  background-color: gold;
+  font-size: 28pt;
+  text-shadow: 0 1px 3px whitesmoke;
+}
+
+.silver {
+  background-color: silver;
+  font-size: 22pt;
+}
+
+.bronze {
+  background-color: #cd7f32;
 }

@@ -9,6 +9,8 @@ import {
 import './LeaderBoardTable.css';
 import Button from '../UI/Button/Button';
 
+const PAGE_SIZE = 10;
+
 const columnHelper = createColumnHelper();
 
 const columns = [
@@ -34,7 +36,7 @@ const LeaderBoardTable = ({ data }) => {
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageSize: 5,
+        pageSize: PAGE_SIZE,
       },
     },
   });
@@ -59,15 +61,26 @@ const LeaderBoardTable = ({ data }) => {
           ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {table.getRowModel().rows.map((row) => {
+            const highlightClass =
+              row.id === '0'
+                ? 'gold'
+                : row.id === '1'
+                ? 'silver'
+                : row.id === '2'
+                ? 'bronze'
+                : null;
+
+            return (
+              <tr key={row.id} className={highlightClass}>
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 

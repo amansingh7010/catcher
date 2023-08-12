@@ -43,7 +43,10 @@ function Layout() {
         <div className="layout-container">{renderScreen()}</div>
       </div>
       {leaderBoardOpen && (
-        <Modal title="Leader Board" onClose={() => setLeaderBoardOpen(false)}>
+        <Modal
+          title="Leader Board (Top 100)"
+          onClose={() => setLeaderBoardOpen(false)}
+        >
           <LeaderBoard />
         </Modal>
       )}

@@ -47,10 +47,7 @@ const LeaderBoard = () => {
     fetchLeaderBoardHandler();
   }, [fetchLeaderBoardHandler]);
 
-  console.log(players);
-
   let content = '';
-
   if (loading) content = <p>Loading...</p>;
   else if (players.length === 0)
     content = <p style={{ fontSize: '15pt' }}>No data found</p>;
