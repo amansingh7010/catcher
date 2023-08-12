@@ -7,11 +7,11 @@ import './Notification.css';
 const Notification = ({ id, message, type, position }) => {
   const dispatch = useDispatch();
 
-  // Automatically remove the notification after 5 seconds
+  // Automatically remove the notification after 3 seconds
   useEffect(() => {
     const timeout = setTimeout(() => {
       dispatch(removeNotification(id));
-    }, 50000);
+    }, 3000);
 
     return () => {
       clearTimeout(timeout);

@@ -12,6 +12,7 @@ import './EndMenu.css';
 export const EndMenu = ({ openLeaderBoard }) => {
   const [playerName, setPlayerName] = useState('');
   const [error, setError] = useState(null);
+  const [scoreSubmitted, setScoreSubmitted] = useState(false);
   const score = useSelector((state) => state.score.value);
   const dispatch = useDispatch();
 
@@ -25,6 +26,30 @@ export const EndMenu = ({ openLeaderBoard }) => {
   };
 
   const scoreSubmitHandler = async () => {
+    if (playerName === '') {
+      dispatch(
+        addNotification({
+          message: 'Name cannot be empty',
+          type: 'warn',
+          position: 'center',
+        })
+      );
+
+      return;
+    }
+
+    if (scoreSubmitted) {
+      dispatch(
+        addNotification({
+          message: 'Already saved',
+          type: 'error',
+          position: 'center',
+        })
+      );
+
+      return;
+    }
+
     setError(null);
 
     try {
@@ -41,11 +66,13 @@ export const EndMenu = ({ openLeaderBoard }) => {
 
       const data = await response.json();
 
+      setScoreSubmitted(true);
+
       dispatch(
         addNotification({
-          message: 'Saved Successfully!',
+          message: 'Saved Successfully',
           type: 'success',
-          position: 'bottom-center',
+          position: 'center',
         })
       );
 
@@ -57,7 +84,7 @@ export const EndMenu = ({ openLeaderBoard }) => {
         addNotification({
           message: 'Error!',
           type: 'error',
-          position: 'bottom-center',
+          position: 'center',
         })
       );
     }
