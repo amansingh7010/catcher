@@ -6,6 +6,7 @@ import Button from '../UI/Button/Button';
 import { NEW_GAME } from '../../constants/game-states';
 import { updateGameState } from '../../features/game-state';
 import { updateScore } from '../../features/score';
+import { addNotification } from '../../features/notification';
 import './EndMenu.css';
 
 export const EndMenu = ({ openLeaderBoard }) => {
@@ -39,10 +40,26 @@ export const EndMenu = ({ openLeaderBoard }) => {
       );
 
       const data = await response.json();
+
+      dispatch(
+        addNotification({
+          message: 'Saved Successfully!',
+          type: 'success',
+          position: 'bottom-center',
+        })
+      );
+
       console.log(data);
     } catch (error) {
       console.log(error);
       setError(error);
+      dispatch(
+        addNotification({
+          message: 'Error!',
+          type: 'error',
+          position: 'bottom-center',
+        })
+      );
     }
   };
 

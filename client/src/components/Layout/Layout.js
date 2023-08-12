@@ -9,11 +9,14 @@ import { NEW_GAME, IN_GAME, END_GAME } from '../../constants/game-states';
 import Modal from '../UI/Modal/Modal';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
 import Instructions from '../Instructions/Instructions';
+import Notification from '../UI/Notification/Notification';
 
 function Layout() {
   const [leaderBoardOpen, setLeaderBoardOpen] = useState(false);
   const [instructionsOpen, setInstructionsOpen] = useState(false);
+
   const gameState = useSelector((state) => state.gameState.value);
+  const notifications = useSelector((state) => state.notifications);
 
   // Game can have 3 states
   // 1. New Game
@@ -54,6 +57,13 @@ function Layout() {
         <Modal title="How to Play" onClose={() => setInstructionsOpen(false)}>
           <Instructions />
         </Modal>
+      )}
+      {notifications?.length > 0 && (
+        <div className="notification-container">
+          {notifications.map((notification) => (
+            <Notification key={notification.id} {...notification} />
+          ))}
+        </div>
       )}
     </>
   );

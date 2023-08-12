@@ -8,11 +8,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import gameStateReducer from './features/game-state';
 import scoreReducer from './features/score';
+import notificationReducer from './features/notification';
 
 const store = configureStore({
   reducer: {
     gameState: gameStateReducer,
     score: scoreReducer,
+    notifications: notificationReducer,
   },
 });
 
