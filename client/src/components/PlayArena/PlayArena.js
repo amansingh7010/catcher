@@ -19,7 +19,7 @@ const friends = [p1, p2, p3, p4];
 const enemies = [e1, e2];
 
 export const PlayArena = () => {
-  const [seconds, setSeconds] = useState(15);
+  const [seconds, setSeconds] = useState(60);
   const [boatX, setBoatX] = useState(0);
   const [catchItems, setCatchItems] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
