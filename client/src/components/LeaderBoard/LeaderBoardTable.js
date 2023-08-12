@@ -84,13 +84,15 @@ const LeaderBoardTable = ({ data }) => {
             backgroundColor: '#ffd633',
           }}
         />
-        <span className="pagination-text">
-          <div style={{ marginRight: '0.5rem' }}>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{' '}
-            {table.getPageCount()}
-          </strong>
-        </span>
+        {table.getPageCount() > 1 && (
+          <span className="pagination-text">
+            <div style={{ marginRight: '0.5rem' }}>Page</div>
+            <strong>
+              {table.getState().pagination.pageIndex + 1} of{' '}
+              {table.getPageCount()}
+            </strong>
+          </span>
+        )}
         <Button
           title=">"
           className="pagination-button"
