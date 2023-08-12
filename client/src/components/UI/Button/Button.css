@@ -20,6 +20,6 @@
 .disabled {
   cursor: not-allowed;
   opacity: 1;
-  background-color: #e0e0eb;
+  background-color: #e0e0eb !important;
   color: #a3a3c2;
 }

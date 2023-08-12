@@ -32,6 +32,11 @@ const LeaderBoardTable = ({ data }) => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageSize: 5,
+      },
+    },
   });
 
   return (
@@ -76,22 +81,28 @@ const LeaderBoardTable = ({ data }) => {
             fontSize: '15pt',
             padding: '0.3rem',
             width: '2vw',
+            backgroundColor: '#ffd633',
           }}
         />
-        <Button
-          title=">"
-          className="pagination-button"
-          clickHandler={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-          style={{ fontSize: '15pt', padding: '0.3rem', width: '2vw' }}
-        />
         <span className="pagination-text">
-          <div>Page</div>
+          <div style={{ marginRight: '0.5rem' }}>Page</div>
           <strong>
             {table.getState().pagination.pageIndex + 1} of{' '}
             {table.getPageCount()}
           </strong>
         </span>
+        <Button
+          title=">"
+          className="pagination-button"
+          clickHandler={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+          style={{
+            fontSize: '15pt',
+            padding: '0.3rem',
+            width: '2vw',
+            backgroundColor: '#ffd633',
+          }}
+        />
       </div>
     </div>
   );

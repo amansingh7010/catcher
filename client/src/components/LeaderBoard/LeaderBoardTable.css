@@ -8,6 +8,11 @@
 
 table {
   width: 100%;
+  font-size: 20pt;
+}
+
+table tbody td {
+  text-align: center;
 }
 
 .pagination {

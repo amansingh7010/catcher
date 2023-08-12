@@ -10,6 +10,7 @@ import './EndMenu.css';
 
 export const EndMenu = ({ openLeaderBoard }) => {
   const [playerName, setPlayerName] = useState('');
+  const [error, setError] = useState(null);
   const score = useSelector((state) => state.score.value);
   const dispatch = useDispatch();
 
@@ -20,6 +21,29 @@ export const EndMenu = ({ openLeaderBoard }) => {
 
   const playerNameChangeHandler = (event) => {
     setPlayerName(event.target.value);
+  };
+
+  const scoreSubmitHandler = async () => {
+    setError(null);
+
+    try {
+      const response = await fetch(
+        'https://catcher.amansingh.dev/api/leaderboard',
+        {
+          method: 'POST',
+          body: JSON.stringify({ name: playerName, score }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    }
   };
 
   return (
@@ -35,6 +59,7 @@ export const EndMenu = ({ openLeaderBoard }) => {
         />
         <Button
           title="Submit"
+          clickHandler={scoreSubmitHandler}
           style={{ backgroundColor: '#39e600', fontSize: '23pt' }}
         />
       </div>
