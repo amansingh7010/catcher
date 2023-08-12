@@ -8,6 +8,7 @@ import EndMenu from '../EndMenu/EndMenu';
 import { NEW_GAME, IN_GAME, END_GAME } from '../../constants/game-states';
 import Modal from '../UI/Modal/Modal';
 import LeaderBoard from '../LeaderBoard/LeaderBoard';
+import Instructions from '../Instructions/Instructions';
 
 function Layout() {
   const [leaderBoardOpen, setLeaderBoardOpen] = useState(false);
@@ -48,7 +49,7 @@ function Layout() {
       )}
       {instructionsOpen && (
         <Modal title="How to Play" onClose={() => setInstructionsOpen(false)}>
-          <h1>Instructions go here</h1>
+          <Instructions />
         </Modal>
       )}
     </>

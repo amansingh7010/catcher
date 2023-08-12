@@ -1,0 +1,13 @@
+.instructions-container {
+  font-size: 20pt;
+}
+
+.instructions-container ul li {
+  margin-top: 0.8rem;
+}
+
+.instructions-image {
+  height: 35px;
+  width: 35px;
+  margin: 0px 0.5rem 0px 0.5rem;
+}

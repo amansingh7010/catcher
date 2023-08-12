@@ -54,7 +54,7 @@ export const EndMenu = ({ openLeaderBoard }) => {
         <input
           type="text"
           value={playerName}
-          placeholder="Your Name"
+          placeholder="Player Name"
           onChange={playerNameChangeHandler}
         />
         <Button
