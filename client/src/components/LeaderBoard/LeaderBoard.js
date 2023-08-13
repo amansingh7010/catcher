@@ -18,7 +18,6 @@ const LeaderBoard = () => {
       );
 
       if (!response.ok) {
-        console.log(response);
         throw new Error('Something went wrong');
       }
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   createColumnHelper,
   flexRender,
@@ -31,6 +32,8 @@ const columns = [
 ];
 
 const LeaderBoardTable = ({ data }) => {
+  const selectedPlayerId = useSelector((state) => state.player.value);
+
   const table = useReactTable({
     data,
     columns,
@@ -43,7 +46,18 @@ const LeaderBoardTable = ({ data }) => {
     },
   });
 
-  const selectedPlayerId = useSelector((state) => state.player.value);
+  // Auto select pageIndex for selected player
+  useEffect(() => {
+    if (selectedPlayerId) {
+      let pageNum = -1;
+      for (const index in data) {
+        if (index % PAGE_SIZE === 0) pageNum++;
+        if (data[index].id === selectedPlayerId) {
+          table.setPageIndex(pageNum);
+        }
+      }
+    }
+  }, [data, selectedPlayerId, table]);
 
   return (
     <div className="table-wrapper">
@@ -98,6 +112,18 @@ const LeaderBoardTable = ({ data }) => {
       {table.getPageCount() > 1 && (
         <div className="pagination">
           <Button
+            title="<<"
+            className="pagination-button"
+            clickHandler={() => table.setPageIndex(0)}
+            disabled={table.getState().pagination.pageIndex === 0}
+            style={{
+              fontSize: '15pt',
+              padding: '0.3rem',
+              width: '2vw',
+              backgroundColor: '#ffd633',
+            }}
+          />
+          <Button
             title="<"
             className="pagination-button"
             clickHandler={() => table.previousPage()}
@@ -120,6 +146,18 @@ const LeaderBoardTable = ({ data }) => {
             title=">"
             className="pagination-button"
             clickHandler={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            style={{
+              fontSize: '15pt',
+              padding: '0.3rem',
+              width: '2vw',
+              backgroundColor: '#ffd633',
+            }}
+          />
+          <Button
+            title=">>"
+            className="pagination-button"
+            clickHandler={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
             style={{
               fontSize: '15pt',
