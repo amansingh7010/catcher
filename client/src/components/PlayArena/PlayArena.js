@@ -17,6 +17,8 @@ import e2 from '../../assets/e2.png';
 
 const friends = [p1, p2, p3, p4];
 const enemies = [e1, e2];
+const itemGenerationInterval = 2000;
+const itemFallSpeed = 7;
 
 export const PlayArena = () => {
   const [seconds, setSeconds] = useState(60);
@@ -25,9 +27,6 @@ export const PlayArena = () => {
   const [currentScore, setCurrentScore] = useState(0);
   const [animationMessages, setAnimationMessages] = useState([]);
   const dispatch = useDispatch();
-
-  const itemFallSpeed = 7;
-  const itemGenerationInterval = 2000;
 
   // Hide pointer on game start
   useEffect(() => {
