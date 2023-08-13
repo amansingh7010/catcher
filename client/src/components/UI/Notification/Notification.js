@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { removeNotification } from '../../../features/notification';
 import './Notification.css';
 
-const Notification = ({ id, message, type, position }) => {
+const Notification = ({ id, message, type }) => {
   const dispatch = useDispatch();
 
   // Automatically remove the notification after 3 seconds
@@ -18,7 +19,13 @@ const Notification = ({ id, message, type, position }) => {
     };
   }, [dispatch, id]);
 
-  return <div className={`notification ${type} ${position}`}>{message}</div>;
+  return <div className={`notification ${type}`}>{message}</div>;
+};
+
+Notification.propTypes = {
+  id: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default Notification;

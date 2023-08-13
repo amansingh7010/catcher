@@ -34,7 +34,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
         addNotification({
           message: 'Name cannot be empty',
           type: 'warn',
-          position: 'center',
         })
       );
       return;
@@ -45,7 +44,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
         addNotification({
           message: 'Already saved',
           type: 'error',
-          position: 'center',
         })
       );
       return;
@@ -74,7 +72,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
         addNotification({
           message: 'Saved Successfully',
           type: 'success',
-          position: 'center',
         })
       );
     } catch (error) {
@@ -84,7 +81,6 @@ export const EndMenu = ({ openLeaderBoard }) => {
         addNotification({
           message: 'Error!',
           type: 'error',
-          position: 'center',
         })
       );
     }

@@ -58,13 +58,10 @@ function Layout() {
           <Instructions />
         </Modal>
       )}
-      {notifications?.length > 0 && (
-        <div className="notification-container">
-          {notifications.map((notification) => (
-            <Notification key={notification.id} {...notification} />
-          ))}
-        </div>
-      )}
+      {notifications?.length > 0 &&
+        notifications.map((notification) => (
+          <Notification key={notification.id} {...notification} />
+        ))}
     </>
   );
 }
