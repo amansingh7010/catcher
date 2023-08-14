@@ -24,26 +24,29 @@ The `leaderboard` is an Express application that fetches and stores player data 
 
 #### Development Tools
 
-The following development tools must be installed on your machine before you begin editing the code.
+The following development tools must be installed (in the same order) on your machine before you begin editing the code.
 
 1. Docker Desktop. (https://www.docker.com/products/docker-desktop)
-2. `ingress-nginx` for Docker Desktop. (https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop)
-3. Skaffold (https://skaffold.dev)
-4. Edit your `hosts` file and add `"127.0.0.1 catcher.amansingh.dev"` at the end of the file. `hosts` file can be found at:  
+2. Enable Kubernetes from Settings in Docker Desktop. Before proceeding, make sure that docker and kubernetes are running and configured correctly.
+3. `ingress-nginx` for Docker Desktop. (https://kubernetes.github.io/ingress-nginx/deploy/#docker-desktop). I recommend using `kubectl` to install `ingress-nginx` with the following command.<pre>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/aws/deploy.yaml</pre>
+4. Skaffold (https://skaffold.dev)
+5. Edit your `hosts` file and add `"127.0.0.1 catcher.amansingh.dev"` at the end of the file. Editing this file require admin privileges. `hosts` file can be found at:  
    &emsp;&emsp; Windows - `C:\Windows\System32\drivers\etc`  
    &emsp;&emsp; Mac & Linux - `/etc/hosts`
 
 #### Steps to run the game locally
 
 1. Extract `catcher.zip` or clone the repository.
-2. Pull the required images from docker hub using `"docker pull amansinghs/catcher-client && docker pull amansinghs/catcher-leaderboard"` or build the images locally.
-3. Run `"skaffold dev"` from the project root directory.
+2. Pull the required images from docker hub using the following command or build the images locally.<pre>docker pull amansinghs/catcher-client && docker pull amansinghs/catcher-leaderboard</pre>
+3. Run the following command from the project root directory.<pre>skaffold dev</pre>
 4. Visit `catcher.amansingh.dev` from your web browser.
 5. Your web browser will show you an HSTS error because of self-signed SSL certificate from Kubernetes. Type `"thisisunsafe"` anywhere in the browser window to bypass this screen. Note that this is only for development environment. Correct SSL certificate is already in place for production environment.
 
 Skaffold will automatically create the required `Deployments` and `Services`. If you edit any file, it will re-deploy the latest changes. See `skaffold.yaml` for details.
 
-Note: There is a known bug with Skaffold where sometimes the deployments will fail to stabilize. (https://github.com/GoogleContainerTools/skaffold/issues/8972). Just add `"--tolerate-failures-until-deadline"` flag with `"skaffold dev"` command.
+Note: There is a known bug with Skaffold where sometimes the deployments may fail to stabilize sometimes. (https://github.com/GoogleContainerTools/skaffold/issues/8972). Just add `"--tolerate-failures-until-deadline"` flag with `"skaffold dev"` command.
+
+<pre>skaffold dev --tolerate-failures-until-deadline</pre>
 
 ## APIs Endpoints
 
