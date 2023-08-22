@@ -44,7 +44,7 @@ The following development tools must be installed (in the same order) on your ma
 
 Skaffold will automatically create the required `Deployments` and `Services`. If you edit any file, it will re-deploy the latest changes. See `skaffold.yaml` for details.
 
-Note: There is a known bug with Skaffold where sometimes the deployments may fail to stabilize sometimes. (https://github.com/GoogleContainerTools/skaffold/issues/8972). Just add `"--tolerate-failures-until-deadline"` flag with `"skaffold dev"` command.
+Note: There is a known bug with Skaffold where the deployments fail to stabilize sometimes. (https://github.com/GoogleContainerTools/skaffold/issues/8972). Just add `"--tolerate-failures-until-deadline"` flag with `"skaffold dev"` command.
 
 <pre>skaffold dev --tolerate-failures-until-deadline</pre>
 
